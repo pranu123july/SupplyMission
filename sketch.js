@@ -1,4 +1,4 @@
-var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
+var helicopterIMG, helicopterSprite, packageSprite,packageIMG,box1,box2,box3;
 var packageBody,ground
 const Engine = Matter.Engine;
 const World = Matter.World;
@@ -26,14 +26,20 @@ function setup() {
 
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
-        
-	box1=createSprite(width/2,1000,200,20)
+
+    box1=createSprite(width/2,650,200,20)
 	box1.shapeColor=color("red")
+	
+	box2=createSprite(300,610,20,100)
+	box2.shapeColor=color("red")
+
+	box3=createSprite(500,610,20,100)
+	box3.shapeColor=color("red")
 
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.8, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:3, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -58,12 +64,12 @@ function draw() {
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-    Matter.Body.setStatic(packageBody,false);
-    
-
+	Matter.Body.setStatic(packageBody,false);
     
   }
 }
+
+
 
 
 
